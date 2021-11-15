@@ -2,9 +2,28 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import classes from '../styles/ScoreCard.module.css'
+import { useState } from 'react'
 
 export default function Home(props) {
   console.log('HomeProps', props)
+  const [articles, setArticles] = useState([])
+
+  const getArticleHandler = async () => {
+    const token = localStorage.getItem('token')
+    console.log('token', token)
+    const response = await fetch('http://localhost:1337/articles', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+
+      }
+    })
+    const data = await response.json()
+    console.log('data', data)
+    setArticles(data)
+  }
+  console.log('articles', articles)
   return (
     <div className={styles.container}>
       <Head>
@@ -14,16 +33,28 @@ export default function Home(props) {
       </Head>
       <h1 className={classes.mainheader}>
         ScoreBoard
+
       </h1>
+      <button className={classes.button}>
+        <a href="http://c056-101-98-153-53.ngrok.io/connect/google">Login</a>
+      </button>
       <main className={styles.main}>
 
+        <button onClick={getArticleHandler}>
+          Get Protected Articles
+        </button>
 
+        {/* {articles.map(article => (
+          <div className={classes.card}>
+            <h2>{article.title}</h2>
+          </div>
+        ))} */}
         <div className={classes.container}>
 
           <div className={classes.scoreCard}>
 
-          {props.games.map((game, index) => {
-              return ( 
+            {props.games.map((game, index) => {
+              return (
                 <>
                   <h1>{game.title}</h1>
                   {game.scores.map((score, index) => {
@@ -33,7 +64,7 @@ export default function Home(props) {
                         <p>{score.score}</p>
                       </>
                     )
-                    
+
                   })}
                 </>
               )
@@ -48,13 +79,13 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
 
-   const gamesReq = await fetch('http://localhost:1337/games')
-   const games = await gamesReq.json()
+  const gamesReq = await fetch('http://localhost:1337/games')
+  const games = await gamesReq.json()
   console.log('games', games)
-  
+
   return {
     props: {
-     games: games
+      games: games
     },
   }
 }
