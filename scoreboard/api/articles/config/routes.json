@@ -45,7 +45,7 @@
       "path": "/articles/:id",
       "handler": "articles.delete",
       "config": {
-        "policies": []
+        "policies": ["global::alwaysFail"]
       }
     }
   ]
