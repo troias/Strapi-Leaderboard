@@ -5,7 +5,7 @@
       "path": "/articles",
       "handler": "articles.find",
       "config": {
-        "policies": ["global::demoPolicy" , "localDemo", "global::isUserLoggedIn" ]
+        "policies": ["global::demoPolicy" , "localDemo", "global::isUserLoggedIn", "global::showQueryParams" ]
       }
     },
     {
