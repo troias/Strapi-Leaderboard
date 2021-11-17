@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/users/:id",
+      "handler": "User.findOne",
+      "config": {
+        "policies": ["global::isMyProfile"],
+        "prefix": "",
+        "description": "Retrieve a single user depending on his id",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User",
+          "actionType": "findOne"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "handler": "User.find",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Retrieve all user documents",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User",
+          "actionType": "find"
+        }
+      }
+    }
+  ]
+}
