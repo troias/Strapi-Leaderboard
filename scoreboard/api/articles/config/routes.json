@@ -21,7 +21,7 @@
       "path": "/articles/:id",
       "handler": "articles.findOne",
       "config": {
-        "policies": []
+        "policies": ["global::showQueryParams"]
       }
     },
     {
