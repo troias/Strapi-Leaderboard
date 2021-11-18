@@ -41,6 +41,7 @@ import {useRouter} from 'next/router'
     return (
         <div>
             {status}
+            1
         </div>
     )
 }

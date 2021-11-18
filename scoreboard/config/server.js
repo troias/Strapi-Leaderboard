@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
-  url: "http://c056-101-98-153-53.ngrok.io",
+  url: "http://ccaa-101-98-153-53.ngrok.io",
   cron: {
     enabled: env.bool('CRON_ENABLED', true),
   },
