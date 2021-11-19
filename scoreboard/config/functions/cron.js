@@ -20,4 +20,6 @@ module.exports = {
 //    '* * * * * *': () => {
 //     strapi.services.email.sendEmail("The god", "hey bro love your work");
 //  }
+
+
 };
