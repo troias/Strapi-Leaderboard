@@ -1,5 +1,31 @@
+const parse = require('pg-connection-string').parse;
+
 module.exports = ({ env }) => {
-  if(env("NODE_ENV") === "development") {
+  if(env("NODE_ENV") === "production") {
+    const config = parse(env("DATABASE_URL"))
+    console.log("config", config)
+    return {
+      defaultConnection: 'default',
+      connections: {
+        default: {
+          connector: 'bookshelf',
+          settings: {
+            client: 'postgres',
+            host: config.host,
+            port: config.port,
+            database: config.database,
+            username: config.user,
+            password: config.password,
+          },
+          options: {
+            ssl: false,
+          },
+        },
+      },
+    };
+
+  } else {
+
     return {
       defaultConnection: "default",
       connections: {
@@ -16,29 +42,6 @@ module.exports = ({ env }) => {
       },
     };
 
-  } else {
-    return {
-      defaultConnection: 'default',
-      connections: {
-        default: {
-          connector: 'bookshelf',
-          settings: {
-            client: 'postgres',
-            host: env('DB_HOST', 'localhost'),
-            port: env('DB_PORT', 27017 ),
-            database: env('DB_NAME', 'strapi'),
-            username: env('DB_USER', ""),
-            password: env('DB_PASSWORD', ""),
-            ssl: {
-              rejectUnauthorized: false,
-            },
-          },
-          options: {
-            ssl: true,
-          },
-        },
-      },
-    };
   }
 }
 
