@@ -18,23 +18,23 @@ module.exports = ({ env }) => {
 
   } else {
     return {
-      defaultConnection: "default",
+      defaultConnection: 'default',
       connections: {
         default: {
-          connector: "bookshelf",
+          connector: 'bookshelf',
           settings: {
-            client: "sqlite",
-            filename: ".tmp/data.db",
-            //env("DATABASE_URL"),
-            // host: env("DATABASE_HOST"),
-            // port: env("DATABASE_PORT"),
-            // username: env("DATABASE_USER"),
-            // password: env("DATABASE_PASSWORD"),
-            // database: env("DATABASE_NAME"),
-            // ssl: env("DATABASE_SSL"),
+            client: 'postgres',
+            host: env('DB_HOST', 'localhost'),
+            port: env('DB_PORT', 27017 ),
+            database: env('DB_NAME', 'strapi'),
+            username: env('DB_USER', ""),
+            password: env('DB_PASSWORD', ""),
+            ssl: {
+              rejectUnauthorized: false,
+            },
           },
           options: {
-            useNullAsDefault: true,
+            ssl: true,
           },
         },
       },
