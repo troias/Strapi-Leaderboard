@@ -21,7 +21,8 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user",
-      "via": "orders"
+      "via": "orders",
+      "private": true
     }
   }
 }
