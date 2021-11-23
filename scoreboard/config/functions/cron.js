@@ -17,7 +17,7 @@ module.exports =  {
    * Simple example.
    * Every monday at 1am.
    */
-  // '* * * * * *': async () => {
+   '* * * * * *': async () => {
   //   try {
   //     const req = await strapi.plugins['email'].services.email.send({
   //       to: 'cvtvazrwikxwyisfbs@adfskj.com',
@@ -34,7 +34,17 @@ module.exports =  {
   //   }
 
   //    console.log("env",process.env.SENDGRID_DEFAULT_EMAIL)
-  // },
+    // const book = await strapi.services.score.findOne({player_contains: "alex"});
+    // console.log("book", book);
+    // strapi.log.trace("Book")
+    // strapi.log.debug("bug")
+    // strapi.log.info("info")
+    // strapi.log.warn("warn")
+    // strapi.log.error("error")
+    // strapi.log.fatal("fatal")
+    // console.log("utils function", strapi.config.functions.utils.getRandomInt(1, 10));
+    // strapi.log.debug("utils", strapi.config.functions.utils.getRandomInt(1, 10));
+ },
 
 
 }
