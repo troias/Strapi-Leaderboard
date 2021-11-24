@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_blog_paragraph_with_pictures",
+  "info": {
+    "name": "paragraph_with_picture",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "picture_position": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "left",
+        "right",
+        "bottom"
+      ]
+    }
+  }
+}

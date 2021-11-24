@@ -17,7 +17,7 @@ module.exports =  {
    * Simple example.
    * Every monday at 1am.
    */
-   '* * * * * *': async () => {
+   '1 * * * * *': async () => {
   //   try {
   //     const req = await strapi.plugins['email'].services.email.send({
   //       to: 'cvtvazrwikxwyisfbs@adfskj.com',
@@ -44,6 +44,26 @@ module.exports =  {
     // strapi.log.fatal("fatal")
     // console.log("utils function", strapi.config.functions.utils.getRandomInt(1, 10));
     // strapi.log.debug("utils", strapi.config.functions.utils.getRandomInt(1, 10));
+    const firstPage = await strapi.services.page.findOne({id: 2});
+
+    console.log("firstPage", firstPage);
+    const updatedFirstpage = {...firstPage, title: "updated title"};
+    updatedFirstpage.page_content.map(pageContent => {
+      pageContent.person = "updated person"
+      pageContent.title = "updated title"
+      pageContent.quote = "updated quote"
+      pageContent.content = "updated content"
+
+    })
+    ;
+    console.log("updatedFirstpage", updatedFirstpage);
+
+
+
+    // const updatedPage = await strapi.services.page.update({id: 2}, {...pageContent, person: "updated"});
+
+
+    // console.log("updatedPage", updatedPage);
  },
 
 

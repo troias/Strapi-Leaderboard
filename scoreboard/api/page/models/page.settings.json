@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "page_content": {
+      "type": "dynamiczone",
+      "components": [
+        "blog.paragraph-with-picture",
+        "blog.paragraph",
+        "blog.quote"
+      ]
+    }
+  }
+}
